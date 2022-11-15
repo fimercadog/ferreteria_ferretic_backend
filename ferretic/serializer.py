@@ -24,39 +24,39 @@ class Product_serializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class Order_serializer(serializers.ModelSerializer):
-    vendor = Vendor_serializer(read_only=True)
-    vendor_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Vendor.objects.all(), source='vendor')
-    employee = Employee_serializer(read_only=True)
-    employee_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Employee.objects.all(), source='employee')
+    vendor_id = Vendor_serializer(read_only=True)
+    vendorID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Vendor.objects.all(), source='vendor_id')
+    employee_id = Employee_serializer(read_only=True)
+    employeeID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Employee.objects.all(), source='employee_id')
     class Meta:
         model = Order
         fields = '__all__'
 
-class Order_product_serializer(serializers.ModelSerializer):
-    order = Order_serializer(read_only=True)
-    order_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Order.objects.all(), source='order')
-    product = Product_serializer(read_only=True)
-    product_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Product.objects.all(), source='product')
+class Purchase_serializer(serializers.ModelSerializer):
+    order_id = Order_serializer(read_only=True)
+    orderID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Order.objects.all(), source='order_id')
+    product_id = Product_serializer(read_only=True)
+    productID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Product.objects.all(), source='product_id')
     class Meta:
-        model = Order_product
+        model = Purchase
         fields = '__all__'
 
 class Invoice_serializer(serializers.ModelSerializer):
-    client = Client_serializer(read_only=True)
-    client_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Client.objects.all(), source='client')
-    employee = Employee_serializer(read_only=True)
-    employee_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Employee.objects.all(), source='employee')
+    client_id = Client_serializer(read_only=True)
+    clientID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Client.objects.all(), source='client_id')
+    employee_id = Employee_serializer(read_only=True)
+    employeeID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Employee.objects.all(), source='employee_id')
     class Meta:
         model = Invoice
         fields = '__all__'
 
-class Invoice_product_serializer(serializers.ModelSerializer):
-    invoice = Invoice_serializer(read_only=True)
-    invoice_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Invoice.objects.all(), source='invoice')
-    product = Product_serializer(read_only=True)
-    product_id = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Product.objects.all(), source='product')
+class Sold_serializer(serializers.ModelSerializer):
+    invoice_id = Invoice_serializer(read_only=True)
+    invoiceID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Invoice.objects.all(), source='invoice_id')
+    product_id = Product_serializer(read_only=True)
+    productID = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Product.objects.all(), source='product_id')
     class Meta:
-        model = Invoice_product
+        model = Sold
         fields = '__all__'
 
 class User_serializer(serializers.ModelSerializer):
