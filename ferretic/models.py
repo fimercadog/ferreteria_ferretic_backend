@@ -49,16 +49,16 @@ class Product(models.Model): # Tabla de productos
         return self.product_name
 
 class Order(models.Model): # Tabla de pedidos de productos
-    vendor = models.ForeignKey(Vendor, on_delete=PROTECT)
-    employee = models.ForeignKey(Employee, on_delete=PROTECT)
+    vendor_id = models.ForeignKey(Vendor, on_delete=PROTECT)
+    employee_id = models.ForeignKey(Employee, on_delete=PROTECT)
     order_number = models.CharField(max_length=12)
     def __str__(self):
         return self.order_number
 
-class Order_product(models.Model): # Tabla de relacion pedidos y productos
-    order = models.ForeignKey(Order, on_delete=PROTECT)
+class Purchase(models.Model): # Tabla de relacion pedidos y productos
+    order_id = models.ForeignKey(Order, on_delete=PROTECT)
     order_date = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Product, on_delete=PROTECT)
+    product_id = models.ForeignKey(Product, on_delete=PROTECT)
     order_product_quantity = models.IntegerField()
     order_subtotal = models.IntegerField()
     order_total = models.IntegerField()
@@ -66,16 +66,16 @@ class Order_product(models.Model): # Tabla de relacion pedidos y productos
         return self.order_number'''
 
 class Invoice(models.Model): # Tabla de facturas
-    client = models.ForeignKey(Client, on_delete=PROTECT)
-    employee = models.ForeignKey(Employee, on_delete=PROTECT)
+    client_id = models.ForeignKey(Client, on_delete=PROTECT)
+    employee_id = models.ForeignKey(Employee, on_delete=PROTECT)
     invoice_number = models.CharField(max_length=12)
     def __str__(self):
         return self.invoice_number
 
-class Invoice_product(models.Model): # Tabla de relacion facturas y productos
-    invoice = models.ForeignKey(Invoice, on_delete=PROTECT)
+class Sold(models.Model): # Tabla de relacion facturas y productos
+    invoice_id = models.ForeignKey(Invoice, on_delete=PROTECT)
     invoice_date = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Product, on_delete=PROTECT)
+    product_id = models.ForeignKey(Product, on_delete=PROTECT)
     invoice_product_quantity = models.IntegerField()
     invoice_subtotal = models.IntegerField()
     invoice_total = models.IntegerField()

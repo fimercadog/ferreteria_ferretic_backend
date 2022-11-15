@@ -44,9 +44,9 @@ class Order_view(viewsets.ModelViewSet):
     serializer_class = Order_serializer
 
 
-class Order_product_view(viewsets.ModelViewSet):
-    queryset = Order_product.objects.all()
-    serializer_class = Order_product_serializer
+class Purchase_view(viewsets.ModelViewSet):
+    queryset = Purchase.objects.all()
+    serializer_class = Purchase_serializer
 
 
 class Invoice_view(viewsets.ModelViewSet):
@@ -54,6 +54,6 @@ class Invoice_view(viewsets.ModelViewSet):
     serializer_class = Invoice_serializer
 
 
-class Invoice_product_view(viewsets.ModelViewSet):
-    queryset = Invoice_product.objects.all()
-    serializer_class = Invoice_product_serializer
+class Sold_view(viewsets.ModelViewSet):
+    queryset = Sold.objects.all()
+    serializer_class = Sold_serializer

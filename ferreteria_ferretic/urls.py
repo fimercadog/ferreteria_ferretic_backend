@@ -11,9 +11,9 @@ router.register('vendor', Vendor_view, basename='vendor')
 router.register('client', Client_view, basename='client')
 router.register('product', Product_view, basename='product')
 router.register('order', Order_view, basename='order')
-router.register('order_product', Order_product_view, basename='order_product')
+router.register('purchase', Purchase_view, basename='purchase')
 router.register('invoice', Invoice_view, basename='invoice')
-router.register('invoice_product', Invoice_product_view, basename='invoice_product')
+router.register('sold', Sold_view, basename='sold')
 
 
 urlpatterns = [
