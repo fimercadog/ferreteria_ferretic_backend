@@ -82,3 +82,5 @@ class Sold(models.Model): # Tabla de relacion facturas y productos
     '''def __str__(self):
             return self.invoice_number'''
 
+
+
