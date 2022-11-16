@@ -81,3 +81,4 @@ class Sold(models.Model): # Tabla de relacion facturas y productos
     invoice_total = models.IntegerField()
     '''def __str__(self):
             return self.invoice_number'''
+
