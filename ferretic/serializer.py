@@ -75,3 +75,4 @@ class User_serializer(serializers.ModelSerializer):
         user.set_password(validated_data['employee_password'])
         user.save()
         return user
+
