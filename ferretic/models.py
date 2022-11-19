@@ -10,6 +10,7 @@ class User(AbstractUser): # To validated users
     employee_birthday = models.CharField(max_length=15)
     employee_username = models.CharField(max_length=80)
     employee_password = models.CharField(max_length=30)
+    employee_enabled = models.BooleanField(default=True)
     token = models.CharField(max_length=100, default='', null=True, blank=True)
 
 class Employee(models.Model): # Tabla de emppleado
@@ -20,6 +21,7 @@ class Employee(models.Model): # Tabla de emppleado
     employee_birthday = models.CharField(max_length=15)
     employee_username = models.CharField(max_length=80)
     employee_password = models.CharField(max_length=30)
+    employee_enabled = models.BooleanField(default=True)
     def __str__(self):
         return self.employee_name + ' ' + self.employee_lastname
 
@@ -28,6 +30,7 @@ class Vendor(models.Model): # Tabla de proveedores
     vendor_address = models.CharField(max_length=100)
     vendor_telephone = models.CharField(max_length=15)
     vendor_email = models.EmailField()
+    vendor_enabled = models.BooleanField(default=True)
     def __str__(self):
         return self.vendor_name
 
@@ -37,6 +40,7 @@ class Client(models.Model): # Tabla de clientes
     client_address = models.CharField(max_length=100)
     client_telephone = models.CharField(max_length=15)
     client_email = models.EmailField()
+    client_enabled = models.BooleanField(default=True)
     def __str__(self):
         return self.client_name + ' ' + self.client_lastname
 
@@ -45,6 +49,7 @@ class Product(models.Model): # Tabla de productos
     product_description = models.TextField(max_length=80)
     product_price = models.FloatField()
     product_stock = models.IntegerField()
+    product_enabled = models.BooleanField(default=True)
     def __str__(self):
         return self.product_name
 
@@ -52,6 +57,7 @@ class Order(models.Model): # Tabla de pedidos de productos
     vendor = models.ForeignKey(Vendor, on_delete=PROTECT)
     employee = models.ForeignKey(Employee, on_delete=PROTECT)
     order_number = models.CharField(max_length=12)
+    order_enabled = models.BooleanField(default=True)
     def __str__(self):
         return self.order_number
 
@@ -62,6 +68,7 @@ class Purchase(models.Model): # Tabla de relacion pedidos y productos
     order_product_quantity = models.IntegerField()
     order_subtotal = models.IntegerField()
     order_total = models.IntegerField()
+    purchase_enabled = models.BooleanField(default=True)
     '''def __str__(self):
         return self.order_number'''
 
@@ -69,6 +76,7 @@ class Invoice(models.Model): # Tabla de facturas
     client = models.ForeignKey(Client, on_delete=PROTECT)
     employee = models.ForeignKey(Employee, on_delete=PROTECT)
     invoice_number = models.CharField(max_length=12)
+    invoice_enabled = models.BooleanField(default=True)
     def __str__(self):
         return self.invoice_number
 
@@ -79,6 +87,8 @@ class Sold(models.Model): # Tabla de relacion facturas y productos
     invoice_product_quantity = models.IntegerField()
     invoice_subtotal = models.IntegerField()
     invoice_total = models.IntegerField()
+    sold_enabled = models.BooleanField(default=True)
+
     '''def __str__(self):
             return self.invoice_number'''
 
