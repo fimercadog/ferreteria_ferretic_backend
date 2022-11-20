@@ -68,7 +68,7 @@ class Purchase(models.Model): # Tabla de relacion pedidos y productos
     order_product_quantity = models.IntegerField()
     order_subtotal = models.IntegerField()
     order_total = models.IntegerField()
-    purchase_enabled = models.BooleanField(default=True)
+    #purchase_enabled = models.BooleanField(default=True)
     '''def __str__(self):
         return self.order_number'''
 
@@ -87,7 +87,7 @@ class Sold(models.Model): # Tabla de relacion facturas y productos
     invoice_product_quantity = models.IntegerField()
     invoice_subtotal = models.IntegerField()
     invoice_total = models.IntegerField()
-    sold_enabled = models.BooleanField(default=True)
+    #sold_enabled = models.BooleanField(default=True)
 
     '''def __str__(self):
             return self.invoice_number'''
