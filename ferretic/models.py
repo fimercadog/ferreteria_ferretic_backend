@@ -37,15 +37,6 @@ class Vendor(models.Model):  # Tabla de proveedores
         return self.vendor_name
 
 
-class Client(models.Model):  # Tabla de clientes
-    client_name = models.CharField(max_length=50)
-    client_lastname = models.CharField(max_length=50)
-    client_address = models.CharField(max_length=100)
-    client_telephone = models.CharField(max_length=15)
-    client_email = models.EmailField()
-
-    def __str__(self):
-        return self.client_name + ' ' + self.client_lastname
 
 
 class Product(models.Model):  # Tabla de productos
@@ -79,7 +70,7 @@ class Order_product(models.Model):  # Tabla de relacion pedidos y productos
 
 
 class Invoice(models.Model):  # Tabla de facturas
-    client = models.ForeignKey(Client, on_delete=PROTECT)
+    client = models.ForeignKey(User, on_delete=PROTECT)
     employee = models.ForeignKey(Employee, on_delete=PROTECT)
     invoice_number = models.CharField(max_length=12)
 

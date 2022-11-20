@@ -28,12 +28,6 @@ class Vendor_view(viewsets.ModelViewSet):
     queryset = Vendor.objects.all()
     serializer_class = Vendor_serializer
 
-
-class Client_view(viewsets.ModelViewSet):
-    queryset = Client.objects.all()
-    serializer_class = Client_serializer
-
-
 class Product_view(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = Product_serializer
